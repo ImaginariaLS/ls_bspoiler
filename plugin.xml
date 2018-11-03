@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
     <name>
-        <lang name="default">Bspoiler Plugin (rewrote 1.0.3)</lang>
-        <lang name="russian">Плагин Bspoiler (переделан под 1.0.3)</lang>
+        <lang name="default">Spoiler Plugin</lang>
+        <lang name="russian">Плагин Spoiler</lang>
     </name>
     <author>
-        <lang name="default">kks (rewrote dex-)</lang>
-        <lang name="russian">kks (переделал dex-, выложил testerok)</lang>
+        <lang name="default">kks</lang>
+        <lang name="russian">kks</lang>
     </author>
-    <homepage>http://ls.ksotik.ru/</homepage>
     <version>1.1.0</version>
     <requires>
         <livestreet>1.0.3</livestreet>

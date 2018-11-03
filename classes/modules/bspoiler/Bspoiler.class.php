@@ -29,35 +29,33 @@
 
 class PluginBspoiler_ModuleBspoiler extends PluginBspoiler_Inherit_ModuleText
 {
-	protected function JevixConfig()
-	{
-		parent::JevixConfig();
-		
-		$aTags = array_keys($this->oJevix->tagsRules);
-		$aTags[] = 'spoiler';
-		$this->oJevix->cfgAllowTags($aTags);
-		$this->oJevix->cfgAllowTagParams('spoiler', array('title'));
-	}
-	
-	private function SpoilerParser($sText)
-	{
-		$aMatches = array();
-		while (preg_match('/<spoiler title="(.+?)">/', $sText, $aMatches) !== false && count($aMatches) > 1) {
-			$sTitle = $aMatches[1];
-			$sText = str_replace("<spoiler title=\"$sTitle\">",
-								 '<div><b class="spoiler-title">'.$sTitle.'</b><div class="spoiler-body">',
-								 $sText);
-			$sText = str_replace("</spoiler>", '</div></div>', $sText);
-		}
-		return $sText;
-	}
+    public function Parser($sText)
+    {
+        $sResult = parent::Parser($sText);
+        $sResult = $this->SpoilerParser($sResult);
+        return $sResult;
+    }
 
-	public function Parser($sText)
-	{
-		$sResult = parent::Parser($sText);
-		$sResult = $this->SpoilerParser($sResult);
-		return $sResult;
-	}
+    private function SpoilerParser($sText)
+    {
+        $aMatches = array();
+        while (preg_match('/<spoiler title="(.+?)">/', $sText, $aMatches) !== false && count($aMatches) > 1) {
+            $sTitle = $aMatches[1];
+            $sText = str_replace("<spoiler title=\"$sTitle\">",
+                '<div><b class="spoiler-title">' . $sTitle . '</b><div class="spoiler-body">',
+                $sText);
+            $sText = str_replace("</spoiler>", '</div></div>', $sText);
+        }
+        return $sText;
+    }
+
+    protected function JevixConfig()
+    {
+        parent::JevixConfig();
+
+        $aTags = array_keys($this->oJevix->tagsRules);
+        $aTags[] = 'spoiler';
+        $this->oJevix->cfgAllowTags($aTags);
+        $this->oJevix->cfgAllowTagParams('spoiler', array('title'));
+    }
 }
-
-?>

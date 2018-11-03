@@ -31,43 +31,44 @@ if (!class_exists('Plugin')) {
     die('Hacking attemp!');
 }
 
-class PluginBspoiler extends Plugin {
-	protected $sTemplatesUrl = "";
+class PluginBspoiler extends Plugin
+{
+    protected $sTemplatesUrl = "";
 
-	/**
-	 * Делегаты
-	 * 
-	 * @var unknown_type
-	 */	
+    /**
+     * Делегаты
+     *
+     * @var unknown_type
+     */
     protected $aInherits = array(
-		'module' => array('ModuleText' => '_ModuleBspoiler')
+        'module' => array('ModuleText' => '_ModuleBspoiler')
     );
-	
+
     // Активация плагина
-    public function Activate() {
+    public function Activate()
+    {
         return TRUE;
     }
 
     // Деактивация плагина
-    public function Deactivate() {
+    public function Deactivate()
+    {
         return TRUE;
     }
-	
-	/**
-	 * Инициализация плагина
-	 * 
-	 * (non-PHPdoc)
-	 * @see engine/classes/Plugin#Init()
-	 */
-	public function Init()
-	{
-		$sTemplatesUrl = Plugin::GetTemplatePath('PluginBspoiler');
-		
-		// Добавление своего CSS и JS
-		$this->Viewer_AppendStyle($sTemplatesUrl."/css/style.css");
-		$this->Viewer_AppendScript($sTemplatesUrl."/js/bspoiler.js");
-	}
-	
-}
 
-?>
+    /**
+     * Инициализация плагина
+     *
+     * (non-PHPdoc)
+     * @see engine/classes/Plugin#Init()
+     */
+    public function Init()
+    {
+        $sTemplatesUrl = Plugin::GetTemplatePath('PluginBspoiler');
+
+        // Добавление своего CSS и JS
+        $this->Viewer_AppendStyle($sTemplatesUrl . "/css/style.css");
+        $this->Viewer_AppendScript($sTemplatesUrl . "/js/bspoiler.js");
+    }
+
+}
