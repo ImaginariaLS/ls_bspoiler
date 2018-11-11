@@ -29,7 +29,14 @@
 
 class PluginBspoiler_ModuleBspoiler extends PluginBspoiler_Inherit_ModuleText
 {
-    public function Parser($sText)
+    /*
+     * /engine/modules/text/Text.class.php upgraded from Tabun codebase
+    const ACT_CREATE = 1;
+    const ACT_FIX    = 2;
+    const ACT_UPDATE = 3;
+    */
+
+    public function Parser($sText, $actionType = -1)
     {
         $sResult = parent::Parser($sText);
         $sResult = $this->SpoilerParser($sResult);
